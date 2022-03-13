@@ -24,3 +24,27 @@ ou:
 
     use App\Http\Controllers\EventController;
     Route::get('/', [EventController::class, "index"]);
+As **views** ficam na pasta /resources/views
+
+**3 - Blade**
+Blade é a template engine do Laravel. Com ele é possível deixar as views dinâmicas inserindo código HTML e dados vindos do banco de dados.
+Exemplos:
+
+    {{-- Laço condicional --}}
+    @if(10 > 5)
+       <p>A condição é true</p>
+    @endif
+
+    {{-- Exibir variável na tela--}}
+    <p>{{ $nome }}</p>
+
+    {{-- Laço de repetição --}}
+    @for($i = 0; $i < 10; $i++)
+       <p>Posição: {{ $i }}
+    @endfor
+    
+    {{-- Código PHP --}}
+    @php
+       $nome = "Pedro"
+       echo $nome;
+    @endphp
