@@ -14,6 +14,7 @@ Requisitos:
     php artisan  serve
 
 **2 - Rotas e views** 
+
 As **rotas** do projeto são configuradas no arquivo /routes/web.php. Podem ser configuradas das seguintes formas:
 
     Route::get('/produtos', function(){
@@ -27,6 +28,7 @@ ou:
 As **views** ficam na pasta /resources/views
 
 **3 - Blade**
+
 Blade é a template engine do Laravel. Com ele é possível deixar as views dinâmicas inserindo código HTML e dados vindos do banco de dados.
 Exemplos:
 
@@ -50,6 +52,7 @@ Exemplos:
     @endphp
 
 **4 - Arquivos estáticos**
+
 Arquivos como CSS, JS, imagens ficam na pasta /public.
 
     <link rel="stylesheet" href="/css/style.css">
