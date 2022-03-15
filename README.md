@@ -48,3 +48,8 @@ Exemplos:
        $nome = "Pedro"
        echo $nome;
     @endphp
+
+**4 - Arquivos estáticos**
+Arquivos como CSS, JS, imagens ficam na pasta /public.
+
+    <link rel="stylesheet" href="/css/style.css">
