@@ -35,13 +35,13 @@
                 @foreach($events as $event)
                 <div class="col-md-3">
                     <div class="card" style="margin-bottom: 20px;">
-                        <img src="/img/evento2.jpg" alt="" width="100%" style="border-radius: 4px 4px 0 0;">
+                        <img src="/img/events/{{ $event->image }}" alt="{{ $event->title }}" width="100%" style="border-radius: 4px 4px 0 0;">
 
                         <div class="card-body">
                             <span class="card-date">{{ date("d/m/Y") }}</span>
                             <h3 class="card-title">{{ $event->title }}</h3>
                             <p class="card-participants">X participantes</p>
-                            <a href="#">Saber mais</a>
+                            <a href="events/{{ $event->id }}">Saber mais</a>
                         </div>
                     </div>
                 </div>
