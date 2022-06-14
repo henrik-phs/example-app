@@ -28,6 +28,7 @@
     <br>
     <div class="row">
         <div class="col-md-12" id="cards-events">
+            @if(count($events) > 0)
             <h2>Próximos eventos</h2>
             <p>Veja os eventos dos próximos dias</p>
 
@@ -38,16 +39,19 @@
                         <img src="/img/events/{{ $event->image }}" alt="{{ $event->title }}" width="100%" style="border-radius: 4px 4px 0 0;">
 
                         <div class="card-body">
-                            <span class="card-date">{{ date("d/m/Y") }}</span>
+                            <span class="card-date">{{ date("d/m/Y", strtotime($event->date)) }}</span>
                             <h3 class="card-title">{{ $event->title }}</h3>
                             <p class="card-participants">X participantes</p>
-                            <a href="events/{{ $event->id }}">Saber mais</a>
+                            <a href="events/{{ $event->id }}">Saiba mais</a>
                         </div>
                     </div>
                 </div>
-                
+
                 @endforeach
             </div>
+            @else
+            <p>Não há eventos disponíveis</p>
+            @endif
         </div>
     </div>
 
