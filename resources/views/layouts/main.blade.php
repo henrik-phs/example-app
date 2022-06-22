@@ -26,15 +26,12 @@
                 <a class="navbar-brand" href="/">
                     <img src="/img/logo.png" width="50px">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/">Início</a>
-                        </li>
-
                         <li class="nav-item">
                             <a href="/" class="nav-link text-white">Eventos</a>
                         </li>
@@ -43,13 +40,29 @@
                             <a href="/events/create" class="nav-link text-white">Criar Eventos</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="/" class="nav-link text-white">Entrar</a>
-                        </li>
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/dashboard">Meus Eventos</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a href="/" class="nav-link text-white">Cadastrar</a>
-                        </li>
+                            <li class="nav-item">
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <a class="nav-link text-white" href="/logout"
+                                        onclick="event.preventDefault();this.closest('form').submit();">Sair</a>
+                                </form>
+                            </li>
+                        @endauth
+
+                        @guest
+                            <li class="nav-item">
+                                <a href="/login" class="nav-link text-white">Entrar</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/register" class="nav-link text-white">Cadastrar</a>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </nav>
@@ -59,8 +72,8 @@
     <main>
         <div class="container-fluid">
             <div class="row">
-                @if(session('msg'))
-                <p class="msg">{{session('msg')}}</p>
+                @if (session('msg'))
+                    <p class="msg">{{ session('msg') }}</p>
                 @endif
                 @yield('content')
             </div>
@@ -69,7 +82,7 @@
 
     <footer class="container">
         <hr>
-        <p>Minha loja &copy; {{ date('m-Y')}} </p>
+        <p>Minha loja &copy; {{ date('m-Y') }} </p>
     </footer>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
