@@ -80,9 +80,11 @@
         </div>
     </main>
 
-    <footer class="container">
-        <hr>
-        <p>Minha loja &copy; {{ date('m-Y') }} </p>
+    <footer class="container-fluid">
+        <div class="col-md-10 offset-md-1">
+            <hr>
+            <p>Minha loja &copy; {{ date('m-Y') }} </p>
+        </div>
     </footer>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
