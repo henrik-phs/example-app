@@ -8,8 +8,8 @@
         <h1>Meus Eventos</h1>
     </div>
 
-    <div class="col-md-10 offset-md-1 dashboard-title-container">
-        @if(@count(@$events) > 0)
+    <div class="col-md-10 offset-md-1 dashboard-events-container">
+        @if (@count(@$events) > 0)
             <table class="table">
                 <thead>
                     <tr>
@@ -21,14 +21,24 @@
                 </thead>
 
                 <tbody>
-                    @foreach($events as $event)
+                    @foreach ($events as $event)
                         <tr>
                             <th scope="row">{{ $loop->index + 1 }}</th>
-                            <td><a href="/events/{{$event->id}}">{{$event->title}}</a></td>
+                            <td><a href="/events/{{ $event->id }}">{{ $event->title }}</a></td>
                             <td>0</td>
                             <td>
-                                <a href="#" class="btn btn-outline-warning"><ion-icon name="create-outline"></ion-icon></a>
-                                <a href="#" class="btn btn-outline-danger"><ion-icon name="close-outline"></ion-icon></a>
+                                <a href="#" class="btn btn-warning">
+                                    <ion-icon name="create-outline"></ion-icon>
+                                </a>
+
+                                <form action="/events/{{ $event->id }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-danger">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -36,6 +46,6 @@
             </table>
         @else
             <p>Você ainda não tem eventos, <a href="/events/create">Criar evento</a></p>
-            @endif
+        @endif
     </div>
 @endsection

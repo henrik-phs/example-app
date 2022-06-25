@@ -67,3 +67,7 @@
 .dashboard-title-container {
     margin: 20px 0;
 }
+
+.dashboard-events-container form {
+    display: inline-block;
+}
