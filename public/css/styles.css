@@ -71,3 +71,9 @@
 .dashboard-events-container form {
     display: inline-block;
 }
+
+.img-preview {
+    width: 150px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
