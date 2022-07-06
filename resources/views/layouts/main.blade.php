@@ -83,7 +83,7 @@
     <footer class="container-fluid">
         <div class="col-md-10 offset-md-1">
             <hr>
-            <p>Minha loja &copy; {{ date('m-Y') }} </p>
+            <p>HDC Events &copy; {{ date('Y') }} </p>
         </div>
     </footer>
 
