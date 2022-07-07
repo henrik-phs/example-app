@@ -56,3 +56,63 @@ Exemplos:
 Arquivos como CSS, JS, imagens ficam na pasta /public.
 
     <link rel="stylesheet" href="/css/style.css">
+
+**5 - Criando layouts com Blade
+
+Com a criação de layouts é possível reaproveitar códigos, além de deixar o código mais limpo e dinâmico.
+Para criar um layout, dentro da pasta */resources/views/* crie uma pasta *layout/* e dentro dessa pasta crie um arquivo *main.blade.php*
+
+No arquivo *main.blade.php* coloque o código base do layout:
+
+```
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+ <title>@yield('title') </title> <!-- LINHA PARA TÍTULO DINÂMICO -->
+</head>
+
+<body>    
+       @yield('content') <!-- LINHA PARA INSERIR O CONTEÚDO -->
+</body>
+
+</html>
+```
+
+Depois de criado o layout principal, para utilizá-lo, basta inserir as seguintes linhas na view:
+
+```
+@extends('layouts/main') <!-- CHAMA O ARQUIVO main.blade.php -->
+
+@section('title', 'Dashboard') <!-- LINHA PARA INFORMAR QUAL O TÍTULO DA PÁGINA -->
+
+@section('content')
+    <!-- AQUI DENTRO VEM O CONTEÚDO -->
+@endsection
+```
+
+**5 - Resgatando parâmetros de URL
+
+Com o Laravel é possível também pegar parâmetros de URL de 3 formas:
+-parâmetros obrigátorios desta maneira: {id}
+-parâmetros opcionais desta maneira: {id?}
+-query parameters: ?nome=Pedro&idade=25
+
+Para definir as rotas com parâmetro no arquivo /routes/web.php:
+```
+// PARÂMETROS OBRIGATÓRIOS
+Route::get('/produtos', function(){
+    return view('produtos');
+});
+
+// PARÂMETROS OPCIONAIS
+Route::get('/produto/{id?}', function($id = null){
+    return view('produto', ['id' => $id]);
+});
+
+// QUERY PARAMETERS
+Route::get('/produtos', function(){
+    $busca = request('search');
+
+    return view('produtos', ['busca' => $busca]);
+});
+```
