@@ -57,7 +57,7 @@ Arquivos como CSS, JS, imagens ficam na pasta /public.
 
     <link rel="stylesheet" href="/css/style.css">
 
-**5 - Criando layouts com Blade
+**5 - Criando layouts com Blade**
 
 Com a criação de layouts é possível reaproveitar códigos, além de deixar o código mais limpo e dinâmico.
 Para criar um layout, dentro da pasta */resources/views/* crie uma pasta *layout/* e dentro dessa pasta crie um arquivo *main.blade.php*
@@ -90,7 +90,7 @@ Depois de criado o layout principal, para utilizá-lo, basta inserir as seguinte
 @endsection
 ```
 
-**5 - Resgatando parâmetros de URL
+**6 - Resgatando parâmetros de URL**
 
 Com o Laravel é possível também pegar parâmetros de URL de 3 formas:
 -parâmetros obrigátorios desta maneira: {id}
