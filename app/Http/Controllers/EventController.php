@@ -12,14 +12,14 @@ class EventController extends Controller
     {
         $search = request("search");
 
-        if($search){
+        if ($search) {
             $events = Event::where([
                 ["title", "like", "%" . $search . "%"]
             ])->get();
         } else {
-        $events = Event::all();
+            $events = Event::all();
         }
-    
+
         return view('welcome', [
             'events' => $events,
             'search' => $search
@@ -33,7 +33,7 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $event = new Event;
 
         $event->title = $request->title;
@@ -44,7 +44,7 @@ class EventController extends Controller
         $event->items = $request->items;
 
         // Image upload
-        if($request->hasFile("image") && $request->file("image")->isValid()){
+        if ($request->hasFile("image") && $request->file("image")->isValid()) {
 
             $requestImage = $request->image;
 
@@ -55,7 +55,6 @@ class EventController extends Controller
             $requestImage->move(public_path("img/events"), $imageName);
 
             $event->image = $imageName;
-
         }
 
         $user = auth()->user();
@@ -63,7 +62,6 @@ class EventController extends Controller
         $event->save();
 
         return redirect('/')->with("msg", "Evento criado com sucesso!");
-
     }
 
     public function show($id)
@@ -73,10 +71,10 @@ class EventController extends Controller
         $user = auth()->user();
         $hasUserJoined = false;
 
-        if($user){
+        if ($user) {
             $userEvents = $user->eventsAsParticipant->toArray();
-            foreach($userEvents as $userEvent){
-                if($userEvent["id"] == $id){
+            foreach ($userEvents as $userEvent) {
+                if ($userEvent["id"] == $id) {
                     $hasUserJoined = true;
                 }
             }
@@ -100,7 +98,7 @@ class EventController extends Controller
 
         return view("events.dashboard", [
             "events" => $events,
-            "eventsAsParticipant" =>$eventsAsParticipant,
+            "eventsAsParticipant" => $eventsAsParticipant,
         ]);
     }
 
@@ -116,7 +114,7 @@ class EventController extends Controller
         $user = auth()->user();
         $event = Event::findOrFail($id);
 
-        if($user->id != $event->user_id){
+        if ($user->id != $event->user_id) {
             return redirect("/dashboard");
         }
 
