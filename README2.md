@@ -40,3 +40,15 @@ use App\Http\Controllers\EventController; // importa o controller
 
 Route::get('/', [EventController::class, "index"]); // cria a rota e informa qual o método a ser utilizado
 ```
+
+## Autenticação com Laravel
+
+```
+composer require laravel/jetstream
+php artisan jetstream:install livewire
+php artisan migrate
+
+npm install
+npm run dev
+```
+
